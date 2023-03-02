@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+<!-- Head -->
+{% block head %}
+<title>Login</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}" type="text/css" />
+{% endblock %}
+<!--Body-->
+{% block body %} {% if user %}
+<h1>Hello {{user.username}}</h1>
+{% else %}
+<form method="POST">
+  {{ loginform.hidden_tag()}}
+  <!--Username-->
+  {{ loginform.username.label(class="col-sm-3")}} {{loginform.username(class="col-sm-5")}}
+  <br />
+  <!--Password-->
+  {{ loginform.password.label(class="col-sm-3")}} {{ loginform.password(class="col-sm-5")}}
+  <!--Submit-->
+  {{ loginform.submit(class="btn btn-primary")}}
+
+  <div class="form-check">{{ loginform.remember(class="form-check-input") }} {{ loginform.remember.label(class="form-check-label") }}</div>
+  <br />
+  {% for message in get_flashed_messages() %}
+  <h2>{{ message }}</h2>
+  {% endfor %}
+  <script>
+    labels = document.get;
+    document.getElementById("username").value = "{{username}}";
+    document.getElementById("password").value = "{{password}}";
+  </script>
+</form>
+{% endif %} {% endblock %}

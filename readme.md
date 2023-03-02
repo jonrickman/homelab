@@ -57,6 +57,9 @@ Nothing particularly special here.`
 `Finding recipes you like sucks. Having recipes exportable and using meal planning can make a shopping list easier. Eventual goals (lofty) include nutrition information & suggestions. `
 
 ### More projects will be added
+- Location Based List (iOS app)
+- Personalized fitness app 
+
 #
 Jon Rickman  
 https://github.com/jonrickman/
