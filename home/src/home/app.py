@@ -17,6 +17,6 @@ login_manager.login_message_category = "info"
 
 if __name__ == "__main__":
 
-    from urls import *
+    from home.urls import *
 
     app.run(debug=True, host='0.0.0.0')

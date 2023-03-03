@@ -1,6 +1,6 @@
-from app import app
-from forms import LoginForm
-from models import *
+from home.app import app
+from home.forms import LoginForm
+from home.models import *
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import login_user, current_user
 from flask_httpauth import HTTPBasicAuth

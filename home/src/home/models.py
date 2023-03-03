@@ -1,4 +1,4 @@
-from app import db, login_manager, app
+from home.app import db, login_manager, app
 from flask_login import UserMixin
 from sqlalchemy.sql import func
 from sqlalchemy import DateTime, Column, String

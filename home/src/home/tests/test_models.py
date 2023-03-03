@@ -1,5 +1,5 @@
-from models import *
-from app import app, db
+from home.app import app, db
+from home.models import user_factory
 from random import randint
 
 test_user = f"test_user_{randint(0, 10000)}"
@@ -23,4 +23,4 @@ def test_get_user():
         
 def test_failed_get_user():
     with app.app_context():
-        assert user_factory.find_user(f"fake_{test_user}").first()
+        assert user_factory.find_user(f"fake_{test_user}").first() == None
