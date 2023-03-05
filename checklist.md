@@ -6,6 +6,6 @@
   - [x] pytests for checking werkzeug
   - [x] test user login (GUI)
   - [x] Logout working
-- [ ] Setup Navbar (currently blank)
+- [x] Setup Navbar (currently blank)
   - [ ] auth gate relevant parts
   - [ ] add other app locations (but disable)
