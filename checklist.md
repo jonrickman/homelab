@@ -9,7 +9,12 @@
 - [x] Setup Navbar (currently blank)
   - [x] auth gate relevant parts
   - [x] add other app locations (but disable)
-- [ ] YouTube Downloader
+- [ ] Restructure project for scalability
+  - [ ] Move app.py to root
+  - [ ] Create other subfolders
+  - [ ] rename urls.py in home
+  - [ ] fix pytests and dev.py
+ - [ ] YouTube Downloader
   - [ ] Backend API
     - [ ] Make Model for db storage
     - [ ] Write endpoint
