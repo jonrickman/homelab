@@ -7,5 +7,15 @@
   - [x] test user login (GUI)
   - [x] Logout working
 - [x] Setup Navbar (currently blank)
-  - [ ] auth gate relevant parts
-  - [ ] add other app locations (but disable)
+  - [x] auth gate relevant parts
+  - [x] add other app locations (but disable)
+- [ ] YouTube Downloader
+  - [ ] Backend API
+    - [ ] Make Model for db storage
+    - [ ] Write endpoint
+    - [ ] Ffmpeg setup
+    - [ ] Setup conversion
+  - [ ] Frontend
+    - [ ] Search
+    - [ ] Download
+    - [ ] List items
