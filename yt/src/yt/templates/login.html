@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+<!-- Head -->
+{% block head %}
+<title>Login</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}" type="text/css" />
+{% endblock %}
+<!--Body-->
+{% block body %} {% if user %}
+<h1>Hello {{user.username}}</h1>
+{% else %}
+<div class="parent container d-flex justify-content-center align-items-center h-100">
+  <form method="POST">
+    {{ loginform.hidden_tag()}}
+    <div class="row">
+      {{ loginform.username.label(class="col-sm-4")}} {{loginform.username(class="col-sm-8")}}
+    </div>
+
+    <div class="row">
+      {{ loginform.password.label(class="col-sm-4")}} {{ loginform.password(class="col-sm-8")}}  
+    </div>
+
+    <div class="row">
+      {{ loginform.submit(class="btn btn-primary col-sm-5")}}  
+    <div class="form-check">{{ loginform.remember(class="form-check-input") }} {{ loginform.remember.label(class="form-check-label") }}</div>
+    </div>
+
+    {% for message in get_flashed_messages() %}
+    <h2>{{ message }}</h2>
+    {% endfor %}
+    <script>
+      labels = document.get;
+      document.getElementById("username").value = "{{username}}";
+      document.getElementById("password").value = "{{password}}";
+    </script>
+  </form> 
+  <div class="container w-25"></div>
+</div>
+{% endif %} {% endblock %}

@@ -1,0 +1,11 @@
+<html>
+  <link rel="stylesheet" href="static/css/index.css" />
+    {% extends "base.html" %}
+
+    <div>
+      {% for message in get_flashed_messages() %}
+      <h2>{{ message }}</h2>
+      {% endfor %}
+    </div>
+
+</html>
