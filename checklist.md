@@ -21,6 +21,7 @@
     - [ ] Ffmpeg setup
     - [ ] Setup conversion
   - [ ] Frontend
+    - [ ] Integrate React?
     - [ ] Search
     - [ ] Download
     - [ ] List items
