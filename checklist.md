@@ -21,7 +21,7 @@
     - [ ] Ffmpeg setup
     - [ ] Setup conversion
   - [ ] Frontend
-    - [ ] Integrate React?
+    - [ ] Definitely do React... not scalable to use flask for this
     - [ ] Search
     - [ ] Download
     - [ ] List items
