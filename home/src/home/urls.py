@@ -36,26 +36,29 @@ def logout():
     flash("You Have Been Logged Out!  Thanks For Stopping By...")
     return redirect(url_for("login"))
 
-@app.route("/yt", methods=["GET", "POST"])
+#region YouTube routes
+YT_BASE="/yt"
+@app.route(YT_BASE, methods=["GET", "POST"])
 @login_required
 def yt():
     flash("YoutTube not implemented yet...")
     return redirect(url_for("home"))
+#endregion
 
-@app.route("/journal", methods=["GET", "POST"])
-@login_required
-def journal():
-    flash("Journal not implemented yet...")
-    return redirect(url_for("home"))
+# @app.route("/journal", methods=["GET", "POST"])
+# @login_required
+# def journal():
+#     flash("Journal not implemented yet...")
+#     return redirect(url_for("home"))
 
-@app.route("/recipe", methods=["GET", "POST"])
-@login_required
-def recipes():
-    flash("Recipes not implemented yet...")
-    return redirect(url_for("home"))
+# @app.route("/recipe", methods=["GET", "POST"])
+# @login_required
+# def recipes():
+#     flash("Recipes not implemented yet...")
+#     return redirect(url_for("home"))
 
-@app.route("/static", methods=["GET", "POST"])
-@login_required
-def static_files():
-    flash("static files not implemented yet...")
-    return redirect(url_for("home"))
+# @app.route("/static", methods=["GET", "POST"])
+# @login_required
+# def static_files():
+#     flash("static files not implemented yet...")
+#     return redirect(url_for("home"))
