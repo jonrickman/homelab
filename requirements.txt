@@ -1,6 +1,11 @@
-flask
-flask_login
-flask_httpauth
-flask_sqlalchemy
-flask_wtf
-wtforms
+fastapi
+jinja2
+sqlalchemy
+python-multipart
+uvicorn[standard]
+# flask
+# flask_login
+# flask_httpauth
+# flask_sqlalchemy
+# flask_wtf
+# wtforms

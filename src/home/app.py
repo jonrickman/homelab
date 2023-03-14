@@ -1,22 +1,40 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager
+from fastapi import FastAPI, Depends, Request, Form, status
+from starlette.responses import RedirectResponse
+from starlette.templating import Jinja2Templates
+from sqlalchemy.orm import Session
 
-app = Flask(__name__)
+import models
+from database import SessionLocal, engine
 
-# Configure Database
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///app.db"
-app.config["SECRET_KEY"] = "password"
-db = SQLAlchemy(app)
+templates=Jinja2Templates(directory="templates")
+app = FastAPI()
 
-# Configure Login Manager
-login_manager = LoginManager()
-login_manager.init_app(app)
-login_manager.login_view = "login"
-login_manager.login_message_category = "info"
 
-if __name__ == "__main__":
+def get_db():
+    db = SessionLocal()
+    try: 
+        yield db
+    except Exception as e:
+        # TODO: Setup logging
+        print(e)
+    finally:
+        db.close()
 
-    from home.urls import *
+@app.get("/")
+def home():
+    return templates.TemplateResponse("index.html")
 
-    app.run(debug=True, host='0.0.0.0')
+#region YouTube
+VIDEOS="/videos/"
+@app.get(VIDEOS)
+def videos_home(request: Request, db: Session = Depends(get_db)):
+    return templates.TemplateResponse("index.html")
+
+@app.get(VIDEOS)
+def videos_add(request: Request, db: Session = Depends(get_db)):
+    return templates.TemplateResponse("index.html")
+
+@app.get(VIDEOS+"/search")
+def videos_home(request: Request, db: Session = Depends(get_db)):
+    return templates.TemplateResponse("index.html")
+#endregion
