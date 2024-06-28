@@ -1,0 +1,35 @@
+<div id="calc-pane" class="container">
+
+  <form>
+    <label for="d4s"># d4s</label>
+    <input type="number" value="0" min="0" name="d4s" />
+    
+    <label for="d6s"># d6s</label>
+    <input type="number" value="0" min="0" name="d6s" />
+    
+    <label for="d8s"># d8s</label>
+    <input type="number" value="0" min="0" name="d8s" />
+
+    <label for="d10s"># d10s</label>
+    <input type="number" value="0" min="0" name="d10s" />
+    <br>
+
+    <label for="d20s"># d20s</label>
+    <input type="number" value="0" min="0" name="d20s" />
+
+    <input type="radio" id="d20_adv" name="d20_adv" value="adv">
+    <label for="d20_adv">Advantage</label>
+    <input type="radio" id="d20_neutral" name="d20_adv" value="nuetral" checked>
+    <label for="d20_neutral">Neutral</label>
+    <input type="radio" id="d20_dis" name="d20_adv" value="dis">
+    <label for="d20_dis">Disadvantage</label>
+
+    <label for="target_roll">Target Roll</label>
+    <input type="number" value="0" min="0" name="target_roll" />
+
+    <button hx-trigger="click" hx-target="#die-result" hx-post="/bg/roll">Push</button>
+  </form>
+
+  <p id="die-result"></p>
+
+</div>

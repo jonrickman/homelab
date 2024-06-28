@@ -1,0 +1,17 @@
+
+{% extends 'base.html' %}
+{% block body %}
+<table id="item-search-table" class="table container">
+{% if items %}
+
+    {% for item in items %}
+        <tr >
+            <td>{{item.i_name}}</td>
+            <td>{{item.effect}}</td>
+            <td>{{item.source}}</td>
+            <td>{{item.location}}</td>
+        </tr>
+    {% endfor %}
+    {% endif %}
+</table>
+{% endblock %}

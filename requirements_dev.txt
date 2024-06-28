@@ -1,0 +1,9 @@
+# pytest
+# pytest-cov
+# tox
+# flake8
+# isort
+flake8
+pytest
+
+-r requirements.txt

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+<!-- Head -->
+{% block head %}
+<title>Baldur's Gate Tools</title>
+{% endblock %}
+<!--Body-->
+{% block body %}
+<link rel="stylesheet" href="/static/css/bg.css" type="text/css" />
+
+<div id="bg-search-pane" class="container">
+  {% include 'navbar.html' %}
+
+  <div class="row">
+    <span class="text-center fs-3">Baldur's Gate Search</span>
+  </div>
+  <div class="row">
+    <input
+      placeholder="Begin Typing To Search Items"
+      class="col-sm-6 offset-sm-3"
+      name="query"
+      type="search"
+      class="border border-gray-600 bg-gray-800 p-2 rounded-lg w-full mb-5"
+      hx-get="/bg/search_items"
+      hx-trigger="input changed delay"
+      hx-target="#item-search-table"
+      value="{{query}}"
+    />
+  </div>
+
+  {% include 'bg-gear-search.html' %}
+</div>
+
+<div>Calculators</div>
+{% include 'bg-calculator.html' %}
+{% endblock %}

@@ -1,0 +1,13 @@
+#bg-search-pane{
+    width: 90%;
+    position: relative;
+    background: #f4f4f4;
+    margin: auto;
+}
+#search-results-pane{
+    position: relative;
+    background: #f4f4f4;
+    margin: auto;
+    max-height: 400px;
+    overflow-y: scroll;
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="/static/css/base.css" type="text/css" />
+
+  {% block head %}
+  <title>TEMPLATE TITLE</title> 
+  {% endblock %}
+</head>
+
+<body>
+  <div class="padding-60"></div>
+  {% block body %} TEMPLATE BODY {% endblock %} 
+  {% include 'footer.html' %}
+
+  {% block scripts %}
+  <script src="/static/js/bootstrap.bundle.min.js"> </script>
+  <script src="/static/js/jquery.min.js"> </script>
+  <script src="https://unpkg.com/htmx.org/dist/htmx.min.js"></script>
+  {% endblock %}
+</body>
+
+</html>
