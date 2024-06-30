@@ -5,32 +5,46 @@ from fastapi.encoders import jsonable_encoder
 
 from homelab.config import MONGODB_URL
 from homelab.models import BGGearItem
+from pathlib import Path
 
 client = motor.motor_asyncio.AsyncIOMotorClient(MONGODB_URL)
-collection = client.test["gear"]
+gear_collection = client.bg["gear"]
+mod_collection = client.bg["mods"]
 
 
 async def drop_bg_items_table():
-    await collection.drop()
+    await gear_collection.drop()
+
+
+async def populate_bg_mods():
+    mod_folder = Path(__name__).parent / 'static' / 'bg'
+    mod_list = Path(mod_folder).rglob('*.zip')
+    for mod in mod_list:
+        pass
+
+
+async def list_bg_mods():
+    mods = await mod_collection.find().to_list(1000)
+    return mods
 
 
 async def list_bg_items():
-    bg_items = await collection.find().to_list(1000)
+    bg_items = await gear_collection.find().to_list(1000)
     return bg_items
 
 
 async def find_bg_item(query: str):
-    items = await collection.find({'i_name': {'$regex': query, '$options': 'i'}}).to_list(1000)
+    items = await gear_collection.find({'i_name': {'$regex': query, '$options': 'i'}}).to_list(1000)
     if items:
         return items
-    items = await collection.find({'effect': {'$regex': query, '$options': 'i'}}).to_list(1000)
+    items = await gear_collection.find({'effect': {'$regex': query, '$options': 'i'}}).to_list(1000)
     return items
 
 
 async def create_bg_gear_item(bg_item: BGGearItem):
     item = jsonable_encoder(bg_item)
-    new_item = await collection.insert_one(item)
-    created_item = await collection.find_one({"_id": new_item.inserted_id})
+    new_item = await gear_collection.insert_one(item)
+    created_item = await gear_collection.find_one({"_id": new_item.inserted_id})
     return created_item
 
 

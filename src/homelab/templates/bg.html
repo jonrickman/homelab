@@ -22,7 +22,7 @@
       type="search"
       class="border border-gray-600 bg-gray-800 p-2 rounded-lg w-full mb-5"
       hx-get="/bg/search_items"
-      hx-trigger="input changed delay"
+      hx-trigger="input changed"
       hx-target="#item-search-table"
       value="{{query}}"
     />
@@ -31,6 +31,12 @@
   {% include 'bg-gear-search.html' %}
 </div>
 
-<div>Calculators</div>
-{% include 'bg-calculator.html' %}
+<div>Calculators
+
+  {% include 'bg-calculator.html' %}
+</div>
+<div>
+  Mods
+  <!-- {% include 'bg-mods.html' %} -->
+</div>
 {% endblock %}

@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, Request
 from fastapi.templating import Jinja2Templates
 
-from homelab import get_templates
+from homelab.depends import get_templates
 
 PREFIX = ""
 
