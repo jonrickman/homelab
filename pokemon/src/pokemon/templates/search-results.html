@@ -1,0 +1,27 @@
+{% block body %}
+<table id="pokemon-search-table" class="table container">
+  {% if pokemon %}
+  <!-- iterate each pokemon -->
+  {% for p in pokemon %}
+  <tr>
+    <td>{{p.pokedex_number}}</td>
+    <td>{{p.pokemon_name}}</td>
+    <td>{{p.abilities}}</td>
+    <td>{{p.stats.hp}}</td>
+    <td>{{p.stats.attack}}</td>
+    <td>{{p.stats.defense}}</td>
+    <td>{{p.stats.special_attack}}</td>
+    <td>{{p.stats.special_defense}}</td>
+    <td>{{p.stats.speed}}</td>
+    <td>
+      {% for location in p.pretty_locations() %} 
+      {{ location }}
+      <br />
+      {% endfor %}
+    </td>
+  </tr>
+  {% endfor %}
+
+  {% endif %}
+</table>
+{% endblock %}

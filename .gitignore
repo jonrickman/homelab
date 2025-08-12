@@ -163,15 +163,10 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-# custom
-dev.py
-# static image uploads... don't create these
-**/static/*.png 
-**/static/*.jpg
+### custom
 # editor settings not actual config settings
 settings.json
 # prod config
 **/config.py
 scratch.py
 .vscode
-About the Owner.zip
