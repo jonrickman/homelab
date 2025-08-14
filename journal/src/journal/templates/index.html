@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+<!-- Head -->
+{% block title %}
+<title>Pokemon Tools</title>
+{% endblock %}
+<!--Body-->
+{% block body %}
+
+{% include 'navbar.html' %}
+<div id="pokemon-pane" class="container">
+
+  <div class="row">
+    <span class="text-center fs-3">Pokemon Search</span>
+  </div>
+  <div class="row">
+    <input
+      placeholder="Begin Typing To Search Mons"
+      class="col-sm-6 offset-sm-3"
+      name="query"
+      type="search"
+      class="border border-gray-600 bg-gray-800 p-2 rounded-lg w-full mb-5"
+      hx-get="{{ url_for('root', path='/search') }}"
+      hx-trigger="input changed"
+      hx-target="#pokemon-search-table"
+      value="{{query}}"
+    />
+  </div>
+  {% include 'search-results.html' %}
+</div>
+<!-- "{{ url_for('root', path='/search') }}" -->
+{% endblock %}

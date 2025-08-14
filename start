@@ -1,3 +1,0 @@
-source venv/bin/activate
-pip install -r requirements_dev.txt
-python src/nikola_carpentry/app.py

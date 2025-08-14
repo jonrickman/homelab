@@ -1,31 +1,29 @@
-version: "3"
-
 services:
-  mongo:
-    build: ./db
-    container_name: mongo
-    hostname: mongo
-    ports:
-    - '27017:27017'
-    volumes:
-    - mongo-data:/data/db
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: pass    
-    networks:
-    - homelab
+  # mongo:
+  #   build: ./db
+  #   container_name: mongo
+  #   hostname: mongo
+  #   ports:
+  #   - '27017:27017'
+  #   volumes:
+  #   - mongo-data:/data/db
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: admin
+  #     MONGO_INITDB_ROOT_PASSWORD: pass    
+  #   networks:
+  #   - homelab
 
 
-  pokemon:
-    build: ./pokemon
-    container_name: pokemon
-    hostname: pokemon
-    ports:
-      - "8001:8000"
-    volumes:
-    - ./pokemon/src/pokemon:/pokemon/src/pokemon
-    networks:
-    - homelab
+  # pokemon:
+  #   build: ./pokemon
+  #   container_name: pokemon
+  #   hostname: pokemon
+  #   ports:
+  #     - "8001:8000"
+  #   volumes:
+  #   - ./pokemon/src/pokemon:/pokemon/src/pokemon
+  #   networks:
+  #   - homelab
 
 
   journal:
@@ -47,8 +45,6 @@ services:
     ports:
     - "80:80"
     restart: always
-    volumes:
-      - ./nginx:/etc/nginx/conf.d
     networks:
     - homelab
 
