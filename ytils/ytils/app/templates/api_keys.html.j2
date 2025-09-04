@@ -1,0 +1,54 @@
+{% extends 'base.html.j2' %}
+{% block title %}
+Hello, World
+{% endblock %}
+
+{% block BODY %}
+
+<div class="container pt-5">
+
+    {% include 'navbar.html.j2' %}
+
+    <div class="container pt-5 border border-4 p-4 mt-5">
+        <h1>Add an API Key</h1>
+        <form action="/api_keys/create" method="post" enctype="multipart/form-data">
+            <input class="form-control" type="text" name="key_value" />
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+
+    <div class="container  pt-5 border border-4 p-4 mt-5">
+
+        <div class="row py-2">
+            <h3>Existing API Keys</h3>
+        </div>
+        
+        <table class="table table-striped" id="api-key-table">
+            <thead>
+                <tr>
+                    <th>Database ID</th>
+                    <th>Key Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if api_keys %}
+                    {% for key in api_keys %}
+                    <tr>
+                        <td><a href="/keys/{{ key.id|string }}">{{ key.id|string }}</a></td>
+                        <td>{{ key.key }} </td>
+                    </tr>
+                    {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+        
+    <script>
+        $(document).ready(function() {
+            $('#api-key-table').DataTable();
+        });
+    </script>
+    
+</div>
+
+{% endblock %}

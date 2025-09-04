@@ -1,0 +1,38 @@
+{% extends 'base.html.j2' %}
+{% block title %}
+    {{ video.video_id }}
+{% endblock %}
+
+{% block BODY %}
+
+<div class="container pt-5">
+
+    {% include 'navbar.html.j2' %}
+    <div class="container border border-4 py-4">
+        <form action="/videos/update/{{ video.id }}" method="post">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" name="title" value="{{ video.title or '' }}">
+            </div>
+
+            <div class="mb-3">
+                <label for="artist" class="form-label">Artist</label>
+                <input type="text" class="form-control" id="artist" name="artist" value="{{ video.artist or '' }}">
+            </div>
+
+            <div class="mb-3">
+                <label for="album" class="form-label">Album</label>
+                <input type="text" class="form-control" id="album" name="album" value="{{ video.album or '' }}">
+            </div>
+
+            <div class="mb-3">
+                <label for="tags" class="form-label">Tags (comma separated)</label>
+                <input type="text" class="form-control" id="tags" name="tags" value="{{ video.tags | join(', ') if video.tags else '' }}">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update video</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+

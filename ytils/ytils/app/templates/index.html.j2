@@ -1,0 +1,15 @@
+{% extends 'base.html.j2' %}
+{% block title %}
+Hello, World
+{% endblock %}
+
+{% block BODY %}
+{% include 'navbar.html.j2' %}
+
+<h2>
+    Hello, world. App works.
+</h2>
+
+<h3>Request made at: {{ time }}</h3>
+
+{% endblock %}

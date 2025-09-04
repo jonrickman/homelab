@@ -1,0 +1,20 @@
+services:
+  app:
+    # image: python:3.11
+    build:
+      context: ./ytils
+      dockerfile: Dockerfile
+    hostname: app
+    volumes:
+      - ./ytils/app:/app
+    env_file:
+      - ./ytils/app/.env
+    networks:
+      - ytils
+    restart: always
+    ports:
+      - "5001:5001"
+
+networks:
+  ytils:
+    driver: bridge

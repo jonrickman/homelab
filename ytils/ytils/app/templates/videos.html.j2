@@ -1,0 +1,66 @@
+{% extends 'base.html.j2' %}
+{% block title %}
+Hello, World
+{% endblock %}
+
+{% block BODY %}
+
+<div class="container pt-5">
+
+    {% include 'navbar.html.j2' %}
+
+    <div class="container pt-5 border border-4 p-4 mt-5">
+        <h1>Download a Video...</h1>
+        <form action="/videos/download" method="post" enctype="multipart/form-data">
+            <input class="form-control" placeholder="videoId" type="text" name="v" />
+            <button class="btn btn-primary" type="submit">Download</button>
+        </form>
+    </div>
+
+    <div class="container pt-5 border border-4 p-4 mt-5">
+        <div class="row py-2">
+            <h3>Existing downloaded videos</h3>
+        </div>
+        
+        <table class="table table-striped" id="video-table">
+            <thead>
+                <tr>
+                    <th style="display:none">Database ID</th>
+                    <th>Video ID</th>
+                    <th>Title</th>
+                    <th>Artist</th>
+                    <th>Album</th>
+                    <th>Tags</th>
+                    <th>Download</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if videos %}
+                    {% for video in videos %}
+                    <tr>
+                        {# TODO: Simplify the whole form here #}
+                        <td style="display:none">{{ video.id }}</td>
+                        <td><a href="/videos/{{ video.video_id }}">{{ video.video_id }}</a></td>
+                        <td>{{ video.title }}</td>
+                        <td>{{ video.artist }}</td>
+                        <td>{{ video.album }}</td>
+                        <td>{{ video.tags }}</td>
+                        <td>
+                            <a href="/videos/download_from_minio/{{ video.id }}" class="btn btn-sm btn-success">Download</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+        
+    <script>
+        $(document).ready(function() {
+            $('#video-table').DataTable();
+        });
+    </script>
+    
+</div>
+
+{% endblock %}

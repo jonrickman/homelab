@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+motor
+httpx
+minio
+python-multipart
+pydantic-settings
+argparse
+jinja2
+requests
+yt_dlp

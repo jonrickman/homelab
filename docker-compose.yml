@@ -1,18 +1,37 @@
-services:
-  # mongo:
-  #   build: ./db
-  #   container_name: mongo
-  #   hostname: mongo
-  #   ports:
-  #   - '27017:27017'
-  #   volumes:
-  #   - mongo-data:/data/db
-  #   environment:
-  #     MONGO_INITDB_ROOT_USERNAME: admin
-  #     MONGO_INITDB_ROOT_PASSWORD: pass    
-  #   networks:
-  #   - homelab
+version: "3"
 
+services:
+  mongo:
+    build: ./db
+    container_name: mongodb
+    hostname: mongodb
+    ports:
+    - '27017:27017'
+    volumes:
+    - mongo-data:/data/db
+    - ./db/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: pass    
+    networks:
+    - homelab
+
+  minio:
+    image: minio/minio
+    container_name: minio
+    environment:
+      - MINIO_ACCESS_KEY=admin
+      - MINIO_SECRET_KEY=adminpass
+    ports:
+      - "9000:9000"
+    volumes:
+      - minio_data:/data
+    command: server /data
+    restart: always
+    networks:
+      - homelab
+    ports:
+      - "8001:8001"
 
   # pokemon:
   #   build: ./pokemon
@@ -25,6 +44,21 @@ services:
   #   networks:
   #   - homelab
 
+  ytils:
+    # image: python:3.11
+    build:
+      context: ./ytils/ytils
+      dockerfile: Dockerfile
+    hostname: ytils
+    volumes:
+      - ./ytils/ytils/app:/app
+    env_file:
+      - ./ytils/ytils/app/.env
+    networks:
+      - homelab
+    restart: always
+    ports:
+      - "5001:5001"
 
   journal:
     build: ./journal
@@ -45,11 +79,17 @@ services:
     ports:
     - "80:80"
     restart: always
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
     networks:
     - homelab
 
+
 volumes:
   mongo-data:
+
+  minio_data:
+    driver: local
 
 
 networks:
